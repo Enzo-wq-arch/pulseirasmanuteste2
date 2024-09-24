@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #fff;
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .promotion {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pulseiras, Anéis, etc.</h1>
+
+    <div class="product" onclick="watzap(558299916477, 'Olá, estou interessado na pulseira!')">
+        <h2>Pulseira</h2>
+        <p>R$5</p>
+    </div>
+
+    <div class="product" onclick="watzap(558299916477, 'Olá, estou interessado no anel!')">
+        <h2>Anel</h2>
+        <p>R$2.50</p>
+        <div class="promotion">Promoção: Pegue 5, pague 4!</div>
+    </div>
+
+
+
+    <script>
+        function watzap(phoneNumber, message) {
+            if (phoneNumber) {
+                phoneNumber = phoneNumber.toString().replace(/\D/g, '');
+
+                if (!message) {
+                    message = "Olá, estou entrando em contato via seu site!";
+                }
+
+                let encodedMessage = encodeURIComponent(message);
+                let url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                window.open(url, '_blank');
+            } else {
+                console.error("Número de telefone é obrigatório.");
+            }
+        }
+    </script>
+</body>
+</html>
